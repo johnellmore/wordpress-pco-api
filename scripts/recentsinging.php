@@ -42,8 +42,7 @@ class PCOWhatWeAreSinging {
 				if ($showcopyright && $song->copyright) {
 					$output .= '<span class="copyright">(&copy; '.$song->copyright.')</span>'."\n";
 				}
-				// disable media links for now--links currently require PCO access
-				if (false && $showmedialinks && ($song->spotify || $song->amazon || $song->itunes)) {
+				if ($showmedialinks && ($song->spotify || $song->amazon || $song->itunes)) {
 					$output .= '<span class="medialinks">'."\n";
 					$output .= 'view on:'."\n";
 					if ($song->spotify) {
