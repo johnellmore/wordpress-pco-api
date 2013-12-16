@@ -20,46 +20,30 @@ class PCOWhatWeAreSinging {
 		if (empty($servicetype) || !is_numeric($servicetype))
 			return 'No servicetype attribute given. Please specify a service type ID.';
 		
-		if ($showauthor == 'false' || 
-			$showauthor == 'no' || 
-			$showauthor == 'hide') {
-			$showauthor = false;
-		} else {
-			$showauthor = true;
-		}
+		$no = array('false', 'no', 'hide');
 		
-		if ($showcopyright == 'false' || 
-			$showcopyright == 'no' || 
-			$showcopyright == 'hide') {
-			$showcopyright = false;
-		} else {
-			$showcopyright = true;
-		}
-		
-		if ($showmedialinks == 'false' || 
-			$showmedialinks == 'no' || 
-			$showmedialinks == 'hide') {
-			$showmedialinks = false;
-		} else {
-			$showmedialinks = true;
-		}
+		$showauthor = !in_array($showauthor, $no);
+		$showcopyright = !in_array($showcopyright, $no);
+		$showmedialinks = !in_array($showmedialinks, $no);
 		
 		// get song list
 		$songs = self::getSongs($servicetype);
 		$output = '<div class="whatwesing">'."\n";
-		foreach ($songs as $day) {
-			$output .= '<h3 class="servicedate">'.$day->date.'</h3>'."\n";
+		foreach ($songs as $i => $day) {
+			$output .= '<div class="col col'.$i.' count2 width1">'."\n";
+			$output .= '<h3 class="servicetitle">'.$day->date.'</h3>'."\n";
 			$output .= '<ul class="songlist">'."\n";
 			foreach ($day->songs as $song) {
 				$output .= '<li class="song">'."\n";
 				$output .= '<h4 class="songtitle">'.$song->title.'</h4>'."\n";
-				if ($showauthor) {
+				if ($showauthor && $song->author) {
 					$output .= '<span class="byline">by '.$song->author.'</span>'."\n";
 				}
 				if ($showcopyright && $song->copyright) {
 					$output .= '<span class="copyright">(&copy; '.$song->copyright.')</span>'."\n";
 				}
-				if ($showmedialinks && ($song->spotify || $song->amazon || $song->itunes)) {
+				// disable media links for now--links currently require PCO access
+				if (false && $showmedialinks && ($song->spotify || $song->amazon || $song->itunes)) {
 					$output .= '<span class="medialinks">'."\n";
 					$output .= 'view on:'."\n";
 					if ($song->spotify) {
@@ -76,6 +60,7 @@ class PCOWhatWeAreSinging {
 				$output .= '</li>'."\n";
 			}
 			$output .= '</ul>'."\n";
+			$output .= '</div>'."\n";
 		}
 		$output .= '</div>'."\n";
 		return $output;
@@ -162,11 +147,11 @@ class PCOWhatWeAreSinging {
 				foreach ($item->attachments as $a) {
 					if (!isset($a->type)) continue;
 					if ($a->type == 'AttachmentSpotify') {
-						$song->spotify = $a->url;
+						$song->spotify = $a->public_url;
 					} else if ($a->type == 'AttachmentAmazon') {
-						$song->amazon = $a->url;
+						$song->amazon = $a->public_url;
 					} else if ($a->type == 'AttachmentItunes') {
-						$song->itunes = $a->url;
+						$song->itunes = $a->public_url;
 					}
 				}
 				

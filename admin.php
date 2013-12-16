@@ -106,11 +106,11 @@ class BeltwayPCOAdmin {
 	}
 	
 	public function sanitizeCreds($input) {
+		if (is_object($input)) return $input;
 		$obj = (object)array(
 			'key' => substr(@$input['key'], 0, 100),
 			'secret' => substr(@$input['secret'], 0, 100),
 		);
-		
 		return $obj;
 	}
 	
