@@ -162,11 +162,11 @@ class PCOWhatWeAreSinging {
 				foreach ($item->attachments as $a) {
 					if (!isset($a->type)) continue;
 					if ($a->type == 'AttachmentSpotify') {
-						$song->spotify = $a->url;
+						$song->spotify = $a->public_url;
 					} else if ($a->type == 'AttachmentAmazon') {
-						$song->amazon = $a->url;
+						$song->amazon = $a->public_url;
 					} else if ($a->type == 'AttachmentItunes') {
-						$song->itunes = $a->url;
+						$song->itunes = $a->public_url;
 					}
 				}
 				
