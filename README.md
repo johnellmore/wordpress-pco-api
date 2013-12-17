@@ -3,6 +3,8 @@ wordpress-pco-api
 
 Provides a WordPress framework for the Planning Center Online API, and includes useful example scripts.
 
+See it in action: [http://beltway.org/worship/what-were-singing/](http://beltway.org/worship/what-were-singing/)
+
 When you enable this plugin in WordPress, you'll be able to access a page in the WordPress admin (under Settings > PCO Connection) where you can connect WordPress with your PCO account. Simply enter your Consumer Key and Consumer Secret and you're good to go.
 
 Included is an example script that pulls the two most recent Plans from a Service and displays all the songs from these plans. I made this functionality in order to build a "What We're Singing" page for our church website that displays the songs from the most recent two Sunday Mornings. It will also display handy links to iTunes, Spotify, or Amazon if visitors would like to donwload those songs (note that the songs and their arrangements must be linked to each third-party service inside PCO).
