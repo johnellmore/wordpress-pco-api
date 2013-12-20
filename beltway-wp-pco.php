@@ -8,7 +8,7 @@ Author URI: http://johnellmore.com
 */
 
 // library connections
-require_once('PlanningCenterOnline-API-Helper/PlanningCenterOnline.php');
+require_once('PCO-API.php');
 require_once('access.php');
 require_once('functions.php');
 
