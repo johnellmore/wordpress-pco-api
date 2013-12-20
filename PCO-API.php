@@ -9,6 +9,7 @@
 	 * @author Daniel Boorn daniel.boorn@gmail.com - Available for hire. Email for more info.
 	 * @requires PHP PECL OAuth, http://php.net/oauth
 	 *
+	 * This library was adapted by John Ellmore. https://github.com/johnellmore/PlanningCenterOnline-API-Helper
 	 */
 	class PlanningCenterOnline{
 
