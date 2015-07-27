@@ -1,10 +1,12 @@
 <?php
 /*
 Plugin Name: Planning Center Online Integration
-Plugin URI: https://bitbucket.org/johnellmore/beltway-wp-pco
-Description: Builds a supporting plugin for using the Planning Center Online API, and includes a few useful shortcodes and widgets.
+Plugin URI: https://github.com/johnellmore/wordpress-pco-api
+GitHub Plugin URI: https://github.com/johnellmore/wordpress-pco-api
+Description: A supporting plugin for using the Planning Center Online API. Includes a few useful shortcodes.
 Author: John Ellmore
 Author URI: http://johnellmore.com
+Version: 1.0
 */
 
 // library connections
